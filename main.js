@@ -146,80 +146,52 @@ function flightCost(destination, firstClass) {
   }
 }
 
-
-
 // 7. Given a number 1-7 return the corresponding day of the week.
 // allow a secondary argument to change the first day of the week to monday
 
 function getDayOfWeek(n, offsetForMon) {
-  let out = ''
-  switch (n) {
-    case 1:
-      out = "Monday"
-      break;
-    case 2:
-      out = "Tuesday"
-      break;
-    case 3:
-      out = "Wednesday"
-      break;
-    case 4:
-      out = "Thursday"
-      break;
-    case 5:
-      out = "Friday"
-      break;
-    case 6:
-      out = "Saturday"
-      break;
-    case 7:
-      out = "Sunday"
+  let days = ['sun', 'mon', 'tues', 'wed', 'thur', 'fri', 'sat']
+  n = n - 1
+  if (!offsetForMon) {
+    return days[n]
   }
-  return out
+  let sun = days.shift()
+  days.push(sun)
+  return days[n]
 }
-let resulting = getDayOfWeek(3)
-console.log(resulting)
 
-function dayOfWeek(n) {
-  let out = ''
-  switch (n) {
-    case 1:
-      out = "Monday"
-      break;
-    case 2:
-      out = "Tuesday"
-      break;
-    case 3:
-      out = "Wednesday"
-      break;
-    case 4:
-      out = "Thursday"
-      break;
-    case 5:
-      out = "Friday"
-      break;
-    case 6:
-      out = "Saturday"
-      break;
-    case 7:
-      out = "Sunday"
-  }
-  return out
-}
-let resultings = dayOfWeek(5)
-console.log(resultings)
+getDayOfWeek(2, true)
 
 //more practice
 
 
 //1. Write a function that returns true if the number is even (remember modulus)
-function isEven(n) {
-  return n % 2 == 0;
+function isEven(num) {
+  if (num % 2 == 0) {
+    return true
+  }
+  return false
 }
 
 //2. Write a function that will determine if a car is speeding given the arguments for carSpeed and speedLimit, return a string if it is 'under the speed limit', 'at the speed limit', or 'over the speed limit'.
+let cars = {
+  carSpeed: '70',
+  speedLimit: '60'
+}
 
-//skipped
+function car(speed) {
+  if (speed.speedLimit > 60) {
+    return "over the speed limit"
+  }
+  else if (speed.speedLimit < 60) {
+    return "under the speed limit"
+  }
+  else if (speed.speedLimit = 60) {
+    return "at speed limit"
+  }
+}
+console.log(car(cars))
+
 
 //3. Write a function that given a bird will return true if it is flightless: 
 let bird = {
@@ -247,5 +219,10 @@ function person(account) {
 console.log(person(user))
 
 //5. Write a function that given a number of weeks it will return how many days they contain, have it take in a second parameter that will be true if it only counts buisness days.
+
 function daysFromWeeks(weeksNum, buisnessOnly) {
+  if (buisnessOnly) {
+    return weeksNum * 5
+  }
+  return weeksNum * 7
 }
